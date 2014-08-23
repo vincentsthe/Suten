@@ -79,7 +79,6 @@ define(['guesser', 'storage', 'jquery', 'testcase', 'notifier', 'textarea', 'pla
 							}
 
 							player.resetPosition();
-							game.nextMatch();
 							$("#buttonDiv").animate({
 								opacity: 0,
 							});
@@ -97,6 +96,7 @@ define(['guesser', 'storage', 'jquery', 'testcase', 'notifier', 'textarea', 'pla
 									setSubtaskTrue(currentTC);
 									done = true;
 								}
+								game.nextMatch();
 							}, 750); 
 						}
 					};
