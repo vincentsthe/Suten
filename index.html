@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Suten</title>
+		<link rel="shortcut icon" type="image/ico" href='assets/img/favicon.ico'>
+
+		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/layout.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/custom.css">
+	</head>
+	<body>
+		<div class="main-container">
+			<header>
+				<div class="container">
+					<div class="col-md-12">
+						<div class="clearfix">
+							<div class="pull-left">
+								<img class="logo" src="assets/img/logo.png" alt="Logo Tokilearning"/>
+							</div>
+							<div class="title pull-left">
+								<h1>Olimpiade Sains Nasional</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+			<div class="clearfix"></div>
+			<div class="content">
+				<div class="container">
+					<div class="inner-container clearfix">
+				        <div class="col-md-12 main-content clearfix">
+				            <div>
+
+				            	<div class="title">
+				            			<h1>Suten</h1>
+				            	</div>
+				            	<div class="row">
+				            		<div class="col-md-8">
+				            			<div id="player" class="player">
+				            				
+				            			</div>
+				            			<div style="height: 50px;"></div>
+				            			<div class="text-center">
+				            				<button class="btn btn-danger" id="nextButton"><h2>Selanjutnya</h2></button>
+				            			</div>
+				            			<div id="match" class="row">
+				            			</div>
+				            			<br><br>
+				            			<div id="buttonDiv">
+					            			<div class="text-center">
+					            				<button class="btn btn-danger"><h2 id="left-win">1 Menang</h2></button>
+					            				<button class="btn btn-danger"><h2 id="tie">Seri</h2></button>
+					            				<button class="btn btn-danger"><h2 id="right-win">2 Menang</h2></button>
+					            			</div>
+					            			<br>
+					            			<div class="text-center">
+					            				<button class="btn btn-danger" id="pass"><h2>Pass</h2></button>
+					            			</div>
+				            			</div>
+				            		</div>
+				            		<div class="col-md-4">
+				            			<div>
+				            				<div class="title"><h2>Interaksi</h2></div>
+				            				<textarea id="textarea" class="terminal col-md-12" rows="4" readonly="true"></textarea>
+				            			</div>
+				            			<div class="row-span">
+				            				<div class="col-md-12 title">
+				            					<h2>Indikator Subsoal</h2>
+				            				</div>
+				            				<div class="span-6">
+				            					<div id="tc-1" class="btn btn-danger subtask col-md-12">
+				            						<h1>S1</h1>
+				            					</div>
+				            				</div>
+				            				<div class="span-6">
+				            					<div id="tc-2" class="btn btn-danger subtask col-md-12">
+				            						<h1>S2</h1>
+				            					</div>
+				            				</div>
+				            			</div>
+				            			<div class="clearfix"></div>
+				            			<div class="row-span">
+				            				<div class="col-md-12 title"><h2>Menu</h2></div>
+				            				<div class="span-5">
+				            					<select class="form-control" id="testcase">
+				            						<option value="1">Subtask 1</option>
+				            						<option value="2">Subtask 2</option>
+				            					</select>
+				            				</div>
+				            				<div class="span-4">
+				            					<button class="btn btn-primary btn-block" id="play">Mainkan</button>
+				            				</div>
+				            				<div class="span-3">
+				            					<button class="btn btn-primary btn-block" id="reset">Ulang</button>
+				            				</div>
+				            			</div>
+				            			<div class="clearfix"></div>
+				            				<br>
+				            			<div class="row-span">
+				            				<div class="span-12">
+				            					<button class="btn btn-success btn-block"><h2>Download Source Code</h2></button>
+				            				</div>
+				            			</div>
+				            			<div class="clearfix"></div>
+				            			<br>
+				            			<div class="row-span">
+				            				<div class="span-6">
+				            					<button class="btn btn-info btn-block">Bantuan</button>
+				            				</div>
+				            				<div class="span-6">
+				            					<button class="btn btn-info btn-block">About</button>
+				            				</div>
+				            			</div>
+				            		</div>
+
+				            	</div>
+
+
+				            </div>
+				        </div>
+				    </div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<footer>
+			<div class="container">
+				<div class="pull-left first">
+					<div class="col-md-12">
+						<div class="copyright">
+							&#169; 2014 Tim Olimpiade Komputer Indonesia
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<script type="text/javascript" data-main="assets/js/custom/config.js" src="assets/js/vendor/require.js"></script>
+	</body>
+</html>
