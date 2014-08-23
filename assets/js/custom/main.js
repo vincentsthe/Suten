@@ -108,8 +108,8 @@ define(['guesser', 'storage', 'jquery', 'testcase', 'notifier', 'textarea', 'pla
 						opacity: 1,
 					});
 
-					$("#left-win").text(playerLeft + " menang");
-					$("#right-win").text(playerRight + " menang");
+					$("#left-win h2:first-child").text(playerLeft + " menang");
+					$("#right-win h2:first-child").text(playerRight + " menang");
 
 					$("#left-win").click(function() {
 						answer("left-win");
