@@ -1,45 +1,41 @@
 define(['testcase'], function(testcase) {
-	var n1, n2;
+	var turn;
 	var remainingPass;
 	var player;
 
 	var game = {
 		init: function() {
-			n1 = 1;
-			n2 = 2;
+			turn = 0;
 			player = testcase.getPlayerCount();
 			remainingPass = testcase.getPassCount();
 		},
 		getPlayer: function() {
 			return {
-				left: n1,
-				right: n2,
+				left: testcase.getTurn(turn)[0],
+				right: testcase.getTurn(turn)[1],
 			};
 		},
-		haveRemainingPass: function() {
-			return (remainingPass !== 0);
+		successPass: function() {
+			return (remainingPass >= 0);
 		},
 		isGameFinish: function() {
-			return ((n1 === player-1) && (n2 === player));
+			var count = testcase.getPlayerCount();
+			return (turn == (count*(count-1))/2);
 		},
 		getMatchWinner: function() {
 			hand1 = testcase.getPlayerHand(this.getPlayer().left);
 			hand2 = testcase.getPlayerHand(this.getPlayer().right);
 
 			if(((hand1 == 1)&&(hand2 == 0)) || ((hand1 == 2)&&(hand2 == 1)) || ((hand1 == 0)&&(hand2 == 2))) {
-				return n1;
+				return this.getPlayer().left;
 			} else if(((hand1 == 0)&&(hand2 == 1)) || ((hand1 == 1)&&(hand2 == 2)) || ((hand1 == 2)&&(hand2 == 0))) {
-				return n2;
+				return this.getPlayer().right;
 			} else {
 				return 0;
 			}
 		},
 		nextMatch: function() {
-			n2++;
-			if(n2>player) {
-				n1++;
-				n2 = n1 + 1;
-			}
+			turn++;
 		},
 		doPass: function() {
 			remainingPass--;

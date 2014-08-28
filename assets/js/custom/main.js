@@ -1,5 +1,5 @@
-define(['guesser', 'storage', 'jquery', 'testcase', 'notifier', 'textarea', 'player', 'game'], 
-	function(guesser, storage, $, testcase, notifier, textarea, player, game) {
+define(['guesser', 'storage', 'jquery', 'testcase', 'notifier', 'textarea', 'player', 'game', 'message'], 
+	function(guesser, storage, $, testcase, notifier, textarea, player, game, message) {
 	
 	$(document).ready(function() {
 		var done;
@@ -24,12 +24,17 @@ define(['guesser', 'storage', 'jquery', 'testcase', 'notifier', 'textarea', 'pla
 		var init = function(numTC) {
 			currentTC = numTC;
 			testcase.init(numTC);
+			storage.init();
+			colorSubtask();
 			player.init();
 			game.init();
 			textarea.reset();
+			textarea.insertLeft(testcase.getHeader());
 
 			lock = false;
 			done = false;
+
+			$("#match").html("");
 
 			textarea.insertLeft(testcase.getPlayerCount());
 
@@ -48,34 +53,31 @@ define(['guesser', 'storage', 'jquery', 'testcase', 'notifier', 'textarea', 'pla
 								textarea.insertRight(playerLeft + " MENANG");
 								if(game.getMatchWinner() != playerLeft) {
 									done = true;
-									notifier.createAlert("Anda Kalah! Tebakan anda salah.");
+									notifier.createAlert("You Lose! Your guess is wrong.");
 								}
 							} else if(response === "right-win") {
 								textarea.insertRight(playerRight + " MENANG");
 								if(game.getMatchWinner() != playerRight) {
 									done = true;
-									notifier.createAlert("Anda Kalah! Tebakan anda salah.");
+									notifier.createAlert("You Lose! Your guess is wrong.");
 								}
 							} else if(response === "tie") {
 								textarea.insertRight("SERI");
 								if(game.getMatchWinner() != 0) {
 									done = true;
-									notifier.createAlert("Anda Kalah! Tebakan anda salah.");
+									notifier.createAlert("You Lose! Your guess is wrong.");
 								}
 							} else {
 								textarea.insertRight("PASS");
-								if(game.haveRemainingPass() === true) {
-									if(game.getMatchWinner() === 0) {
-										textarea.insertLeft("SERI");
-										notifier.createAlert("Hasil Pertandingan: SERI");
-									} else {
-										textarea.insertLeft(game.getMatchWinner() + " MENANG");
-										notifier.createAlert("Hasil Pertandingan: " + game.getMatchWinner() + " MENANG");
-									}
+								game.doPass();
+								if(game.getMatchWinner() === 0) {
+									textarea.insertLeft("SERI");
+									notifier.createAlert("Match Result: tie");
 								} else {
-									done = true;
-									notifier.createAlert("Anda Kalah! Jumlah PASS melebihi batas");
+									textarea.insertLeft(game.getMatchWinner() + " MENANG");
+									notifier.createAlert("Match Result: " + game.getMatchWinner() + " WIN");
 								}
+								
 							}
 
 							player.resetPosition();
@@ -89,14 +91,19 @@ define(['guesser', 'storage', 'jquery', 'testcase', 'notifier', 'textarea', 'pla
 							setTimeout(function() {
 								$("#buttonDiv").css("visibility","hidden");
 								lock = false;
+								game.nextMatch();
 
 								//sudah selesai
 								if(game.isGameFinish() === true) {
-									notifier.createAlert("Anda Menang!");
-									setSubtaskTrue(currentTC);
-									done = true;
+									if(game.successPass()) {
+										$("#match").html("<h1>You Win</h1>");
+										setSubtaskTrue(currentTC);
+										done = true;
+									} else {
+										$("#match").html("<h1>You Lose!</h1>You use pass button exceeding the amount allowed.");
+										done = true;
+									}
 								}
-								game.nextMatch();
 							}, 750); 
 						}
 					};
@@ -108,8 +115,8 @@ define(['guesser', 'storage', 'jquery', 'testcase', 'notifier', 'textarea', 'pla
 						opacity: 1,
 					});
 
-					$("#left-win h2:first-child").text(playerLeft + " menang");
-					$("#right-win h2:first-child").text(playerRight + " menang");
+					$("#left-win h2:first-child").text(playerLeft + " win");
+					$("#right-win h2:first-child").text(playerRight + " win");
 
 					$("#left-win").click(function() {
 						answer("left-win");
@@ -135,6 +142,18 @@ define(['guesser', 'storage', 'jquery', 'testcase', 'notifier', 'textarea', 'pla
 
 		$("#play").click(function() {
 			init($("#testcase").val());
+		});
+
+		$("#help").click(function() {
+			notifier.createText(message.help());
+		});
+
+		$("#about").click(function() {
+			notifier.createText(message.about());
+		});
+
+		$("#source").click(function() {
+			notifier.createSource(message.code());
 		});
 	});
 
