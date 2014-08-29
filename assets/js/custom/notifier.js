@@ -80,7 +80,7 @@ define(['testcase'], function(testcase) {
 
 			$("#notif-text").html(message);
 
-			$("#overlay").click(function() {
+			$("#notif-button").click(function() {
 				$("#overlay").remove();
 			});
 		}

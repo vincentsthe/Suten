@@ -3,7 +3,7 @@ define([], function() {
 	var currentTC;
 	var nPlayer = [0, 5, 8];
 	var pass = [0, 6, 7];
-	var header = [".1......", "..2....7"];
+	var header = ["", ".1......", "..2....7"];
 
 	/**
 		0 = kelingking,
@@ -81,18 +81,18 @@ define([], function() {
 		getHeader: function() {
 			return header[currentTC];
 		},
-		getAnswer: function() {
+		getAnswer: function(num) {
 			var ans = '';
-			for(var i=0 ; i<urutan[currentTC].length ; i++) {
-				var n1 = suten[currentTC][urutan[currentTC][i][0]];
-				var n2 = suten[currentTC][urutan[currentTC][i][1]];
+			for(var i=0 ; i<urutan[num].length ; i++) {
+				var n1 = suten[num][urutan[num][i][0]];
+				var n2 = suten[num][urutan[num][i][1]];
 
 				if(((n1==1)&&(n2==0)) || ((n1==2)&&(n2==1)) || ((n1==0)&&(n2==2))) {
-					ans = ans + urutan[currentTC][i][0] + " MENANG";
+					ans = ans + urutan[num][i][0] + " MENANG";
 				} else if(((n2==1)&&(n1==0)) || ((n2==2)&&(n1==1)) || ((n2==0)&&(n1==2))) {
-					ans = ans + urutan[currentTC][i][1] + " MENANG";
+					ans = ans + urutan[num][i][1] + " MENANG";
 				} else {
-					ans = ans + " SERI";
+					ans = ans + "SERI";
 				}
 
 				ans = ans + "\\n"

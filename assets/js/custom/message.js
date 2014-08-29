@@ -26,7 +26,7 @@ define(['testcase', 'storage'], function(testcase, storage) {
 				ans2 = "You have not solve this subtask.";
 			}
 
-			var str = '<pre>#include &lt;cstdio&gt;\n#include &lt;cstring&gt;\n\nusing namespace std;\nchar subtask[100];\n\nint main() {\n\tscanf("%d", subtask);\n\tif(!strcmp(subtask, ".1......")) { printf("' + ans1 + '"); }\n\tif(!strcmp(subtask, "..2....7")) { printf("' + ans2 + '"); }\n\treturn 0;\n}</pre>';
+			var str = '<pre>#include &lt;cstdio&gt;\n#include &lt;cstring&gt;\n\nusing namespace std;\nchar subtask[100];\n\nint main() {\n\tscanf("%s", subtask);\n\tif(!strcmp(subtask, ".1......")) { printf("' + ans1 + '"); }\n\tif(!strcmp(subtask, "..2....7")) { printf("' + ans2 + '"); }\n\treturn 0;\n}</pre>';
 
 			return str;
 		},
