@@ -53,7 +53,7 @@ define(['testcase'], function(testcase) {
 				$("#overlay").remove();
 			});
 		},
-		createSource: function(message) {
+		createSource: function(cmessage, pasmessage) {
 			var overlay = document.createElement("div");
 			overlay.setAttribute("id", "overlay");
 			document.body.appendChild(overlay);
@@ -66,10 +66,31 @@ define(['testcase'], function(testcase) {
 			notifContent.setAttribute("id", "notif-text");
 			notifBox.appendChild(notifContent);
 
+			var cppTitle = document.createElement("div");
+			cppTitle.style.color = "black";
+			cppTitle.style.fontSize = "2em";
+			cppTitle.innerHTML = "C++";
+			notifContent.appendChild(cppTitle);
+
+			$("#notif-text").html($("#notif-text").html() + cmessage);
+
 			var div = document.createElement("div");
-			div.innerHTML = "Save this code as .cpp file and submit the file.";
+			div.innerHTML = "Save this code as .cpp file and submit the file.<br><br><br><br>";
 			div.style.color = "black";
-			notifBox.appendChild(div);
+			notifContent.appendChild(div);
+
+			var pascalTitle = document.createElement("div");
+			pascalTitle.style.color = "black";
+			pascalTitle.style.fontSize = "2em";
+			pascalTitle.innerHTML = "Pascal";
+			notifContent.appendChild(pascalTitle);
+
+			$("#notif-text").html($("#notif-text").html() + pasmessage);
+
+			var div = document.createElement("div");
+			div.innerHTML = "Save this code as .pas file and submit the file.";
+			div.style.color = "black";
+			notifContent.appendChild(div);
 
 			var button = document.createElement("button");
 			button.setAttribute("class", "btn btn-warning");
@@ -78,7 +99,7 @@ define(['testcase'], function(testcase) {
 
 			$("#notif-button").html("OK");
 
-			$("#notif-text").html(message);
+			$("#pascal-text").html(pasmessage);
 
 			$("#notif-button").click(function() {
 				$("#overlay").remove();

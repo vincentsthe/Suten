@@ -36,7 +36,7 @@ define(['guesser', 'storage', 'jquery', 'testcase', 'notifier', 'textarea', 'pla
 
 			$("#match").html("");
 
-			textarea.insertLeft(testcase.getPlayerCount());
+			textarea.insertLeft(testcase.getPlayerCount() + " " + testcase.getPassCount());
 
 			$("#buttonDiv").css("visibility","hidden");
 
@@ -153,7 +153,7 @@ define(['guesser', 'storage', 'jquery', 'testcase', 'notifier', 'textarea', 'pla
 		});
 
 		$("#source").click(function() {
-			notifier.createSource(message.code());
+			notifier.createSource(message.codeC(), message.codePas());
 		});
 	});
 

@@ -11,7 +11,7 @@ define(['testcase', 'storage'], function(testcase, storage) {
 
 			return str;
 		},
-		code: function() {
+		codeC: function() {
 			var ans1,ans2;
 
 			if(storage.isTrue(1)) {
@@ -27,6 +27,27 @@ define(['testcase', 'storage'], function(testcase, storage) {
 			}
 
 			var str = '<pre>#include &lt;cstdio&gt;\n#include &lt;cstring&gt;\n\nusing namespace std;\nchar subtask[100];\n\nint main() {\n\tscanf("%s", subtask);\n\tif(!strcmp(subtask, ".1......")) { printf("' + ans1 + '"); }\n\tif(!strcmp(subtask, "..2....7")) { printf("' + ans2 + '"); }\n\treturn 0;\n}</pre>';
+
+			return str;
+		},
+		codePas: function() {
+			var ans1,ans2;
+
+			if(storage.isTrue(1)) {
+				ans1 = testcase.getAnswer(1);
+				ans1 = ans1.replace(/\\n/g, "'#10'");
+			} else {
+				ans1 = "You have not solve this subtask.";
+			}
+
+			if(storage.isTrue(2)) {
+				ans2 = testcase.getAnswer(2);
+				ans2 = ans2.replace(/\\n/g, "'#10'");
+			} else {
+				ans2 = "You have not solve this subtask.";
+			}
+
+			var str = '<pre>var\n\ts: string;\n\nbegin\n\treadln(s);\n\tif(s = \'.1....\') then\n\tbegin\n\t\t write(\'' + ans1 + '\');\n\tend else if(s = \'..2...\') then begin \n\t\twrite(\'' + ans2 + '\');\n\tend else begin\n\t\t{ General Solution }\n\tend;\nend.</pre>';
 
 			return str;
 		},
